@@ -120,6 +120,13 @@ export class RAGService {
 
     // Handle common abbreviations and variations
     const replacements: Record<string, string> = {
+      'rc': 'RC Regional Coordinator regional coordinator',
+      'rcs': 'RCs Regional Coordinators regional coordinators',
+      'regional coordinator': 'RC Regional Coordinator regional coordinator',
+      'regional coordinators': 'RCs Regional Coordinators regional coordinators',
+      'ta': 'TA Teaching Assistant teaching assistant',
+      'tas': 'TAs Teaching Assistants teaching assistants',
+      'teaching assistant': 'TA Teaching Assistant teaching assistant',
       'tvs': 'TVS Academy TVS School TVS Hosur TVS Tumkur',
       'kumarans': 'Sri Kumaran Kumarans Kumar Children Public School',
       'dps': 'Delhi Public School DPS',
