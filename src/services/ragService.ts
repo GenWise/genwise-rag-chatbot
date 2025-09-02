@@ -3,6 +3,7 @@ import { embeddingService } from './embeddings';
 import { claudeService } from './claude';
 import { vectorStore } from './supabase';
 import type { VectorRecord } from './supabase';
+import { expandQueryTerms } from '../lib/terminologyMapping';
 
 export interface QueryResult {
   answer: string;
@@ -116,34 +117,8 @@ export class RAGService {
   }
 
   private preprocessQuery(query: string): string {
-    let processedQuery = query.toLowerCase();
-
-    // Handle common abbreviations and variations
-    const replacements: Record<string, string> = {
-      'rc': 'RC Regional Coordinator regional coordinator',
-      'rcs': 'RCs Regional Coordinators regional coordinators',
-      'regional coordinator': 'RC Regional Coordinator regional coordinator',
-      'regional coordinators': 'RCs Regional Coordinators regional coordinators',
-      'ta': 'TA Teaching Assistant teaching assistant',
-      'tas': 'TAs Teaching Assistants teaching assistants',
-      'teaching assistant': 'TA Teaching Assistant teaching assistant',
-      'tvs': 'TVS Academy TVS School TVS Hosur TVS Tumkur',
-      'kumarans': 'Sri Kumaran Kumarans Kumar Children Public School',
-      'dps': 'Delhi Public School DPS',
-      'jnv': 'Jawahar Navodaya Vidyalaya Navodaya',
-      'gems': 'GEMS Modern Academy GEMS Genesis GEMS Our Own',
-      'vibgyor': 'VIBGYOR High School VIBGYOR Rise',
-      'greenwood': 'Greenwood High International School',
-      'inventure': 'Inventure Academy',
-    };
-
-    Object.entries(replacements).forEach(([key, replacement]) => {
-      if (processedQuery.includes(key)) {
-        processedQuery += ` ${replacement}`;
-      }
-    });
-
-    return processedQuery;
+    // Use the comprehensive terminology mapping system
+    return expandQueryTerms(query);
   }
 
   private async hybridSearch(processedQuery: string, originalQuery: string): Promise<string> {

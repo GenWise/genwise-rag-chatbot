@@ -203,8 +203,8 @@ Instructors: ${summary.instructors.join(', ')}
 Teaching Assistants: ${summary.teaching_assistants.join(', ')}
 Schools: ${summary.schools.join(', ')}
 Cities: ${summary.cities.join(', ')}
-RCs (Regional Coordinators): ${summary.rcs.join(', ')}
-Regional Coordinators: ${summary.rcs.join(', ')}
+RCs (Residential Counselors): ${summary.rcs.join(', ')}
+Residential Counselors: ${summary.rcs.join(', ')}
     `.trim();
   }
 
@@ -224,8 +224,8 @@ Course 2: ${record.course_2} (Instructor: ${record.instructor_2})
 Course 3: ${record.course_3} (Instructor: ${record.instructor_3})
 Teaching Assistant: ${record.teaching_assistant}
 Parent: ${record.parent_name}
-RC (Regional Coordinator): ${record.rc_name}
-Regional Coordinator: ${record.rc_name}
+RC (Residential Counselor): ${record.rc_name}
+Residential Counselor: ${record.rc_name}
 T-shirt Size: ${record.tshirt_size}
 Food Preferences: ${record.food_preferences}
 Convocation: ${record.convocation_attending}
